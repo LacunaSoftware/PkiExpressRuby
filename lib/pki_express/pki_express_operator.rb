@@ -148,13 +148,16 @@ module PkiExpress
       stdout, _stderr, status = Open3.capture3(escaped.join(' '))
 
       if status != 0
-        if status === ErrorCodes::BAD_SYNTAX and @version_manager.min_version > '1.0'
+        # Compare the exit code, not the Process::Status: its integer value is
+        # the raw wait status (exit code << 8), so it never equals an error code.
+        exit_code = status.exitstatus
+        if exit_code == ErrorCodes::BAD_SYNTAX and @version_manager.min_version > '1.0'
           raise CommandError.new(status, "#{stdout}  >>>>> TIP: This operation requires PKI Express #{@version_manager.min_version}, please check your PKI Express version.")
         end
-        if status === ErrorCodes::VALIDATION_FAILED
+        if exit_code == ErrorCodes::VALIDATION_FAILED
           raise ValidationError.new(stdout)
         end
-        if status === ErrorCodes::COMMAND_NOT_FOUND
+        if exit_code == ErrorCodes::COMMAND_NOT_FOUND
           raise InstallationNotFoundError.new("Could not find PKI Express's installation.")
         end
 
