@@ -42,7 +42,7 @@ module PkiExpress
         raise ArgumentError.new('The provided reference path is not valid')
       end
 
-      unless File.exists?(reference_path)
+      unless File.exist?(reference_path)
         raise ArgumentError.new('The provided reference file was not found')
       end
 
@@ -55,7 +55,7 @@ module PkiExpress
         raise ArgumentError.new('The provided trusted root path is not valid')
       end
 
-      unless File.exists?(root_path)
+      unless File.exist?(root_path)
         raise ArgumentError.new("The provided trusted root path doesn't exist: #{root_path}")
       end
 
@@ -181,22 +181,22 @@ module PkiExpress
       if not home.nil?
 
         if system == :linux
-          unless File.exists?(File.expand_path('pkie.dll', home))
+          unless File.exist?(File.expand_path('pkie.dll', home))
             raise InstallationNotFoundError.new("The file pkie.dll could not be found on directory #{home}")
           end
-        elsif not File.exists?(File.expand_path('pkie.exe', home))
+        elsif not File.exist?(File.expand_path('pkie.exe', home))
           raise InstallationNotFoundError.new("The file pkie.exe could not be found on directory #{home}")
         end
 
       elsif system == :win
 
-        if File.exists?(File.join(ENV['ProgramW6432'], 'Lacuna Software', 'PKI Express', 'pkie.exe'))
+        if File.exist?(File.join(ENV['ProgramW6432'], 'Lacuna Software', 'PKI Express', 'pkie.exe'))
           home = File.join(ENV['ProgramW6432'], 'Lacuna Software', 'PKI Express')
-        elsif File.exists?(File.join(ENV['ProgramFiles(x86)'], 'Lacuna Software', 'PKI Express', 'pkie.exe'))
+        elsif File.exist?(File.join(ENV['ProgramFiles(x86)'], 'Lacuna Software', 'PKI Express', 'pkie.exe'))
           home = File.join(ENV['ProgramFiles(x86)'], 'Lacuna Software', 'PKI Express')
-        elsif File.exists?(File.join(ENV['LOCALAPPDATA'], 'Lacuna Software', 'PKI Express', 'pkie.exe'))
+        elsif File.exist?(File.join(ENV['LOCALAPPDATA'], 'Lacuna Software', 'PKI Express', 'pkie.exe'))
           home = File.join(ENV['LOCALAPPDATA'], 'Lacuna Software', 'PKI Express')
-        elsif File.exists?(File.join(ENV['LOCALAPPDATA'], 'Lacuna Software (x86)', 'PKI Express', 'pkie.exe'))
+        elsif File.exist?(File.join(ENV['LOCALAPPDATA'], 'Lacuna Software (x86)', 'PKI Express', 'pkie.exe'))
           home = File.join(ENV['LOCALAPPDATA'], 'Lacuna Software (x86)', 'PKI Express')
         end
 

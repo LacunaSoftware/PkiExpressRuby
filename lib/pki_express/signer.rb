@@ -96,7 +96,7 @@ module PkiExpress
       unless pkcs12_path
         raise 'The provided "pkcs12_path" is not valid'
       end
-      unless File.exists?(pkcs12_path)
+      unless File.exist?(pkcs12_path)
         raise 'The provided "pkcs12_path" does not exist'
       end
 

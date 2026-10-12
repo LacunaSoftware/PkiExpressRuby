@@ -54,7 +54,7 @@ module PkiExpress
       unless path
         raise 'The provided "signature_file_path" is not valid'
       end
-      unless File.exists?(path)
+      unless File.exist?(path)
         raise 'The provided "signature_file_path" does not exist'
       end
       @signature_file_path = path
