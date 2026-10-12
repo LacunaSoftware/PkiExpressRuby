@@ -89,7 +89,7 @@ module PkiExpress
       unless path
         raise 'The provided "certificate_path" is not valid'
       end
-      unless File.exists?(path)
+      unless File.exist?(path)
         raise 'The provided "certificate_path" does not exist'
       end
 

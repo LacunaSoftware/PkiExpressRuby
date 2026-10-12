@@ -94,7 +94,7 @@ module PkiExpress
       unless path
         raise 'The provided "pdf_to_sign_path" is not valid'
       end
-      unless File.exists?(path)
+      unless File.exist?(path)
         raise 'The provided "pdf_to_sign_path" does not exist'
       end
       @pdf_to_sign_path = path
@@ -152,7 +152,7 @@ module PkiExpress
       unless path
         raise 'The provided "visual_representation_path" is not valid'
       end
-      unless File.exists?(path)
+      unless File.exist?(path)
         raise 'The provided "visual_representation_path" does not exist'
       end
       @vr_json_path = path

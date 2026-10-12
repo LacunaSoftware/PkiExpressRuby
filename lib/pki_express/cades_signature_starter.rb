@@ -93,7 +93,7 @@ module PkiExpress
       unless path
         raise 'The provided "file_to_sign_path" is not valid'
       end
-      unless File.exists?(path)
+      unless File.exist?(path)
         raise 'The provided "file_to_sign_path" does not exist'
       end
 
@@ -185,7 +185,7 @@ module PkiExpress
       unless path
         raise 'The provided "data_file_path" is not valid'
       end
-      unless File.exists?(path)
+      unless File.exist?(path)
         raise 'The provided "data_file_path" does not exist'
       end
 

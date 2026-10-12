@@ -1,3 +1,8 @@
+## 1.3.3 (unreleased)
+* Support Ruby 3.2+: use File.exist? instead of File.exists?, which Ruby 3.2 removed
+* Raise InstallationNotFoundError and ValidationError from PKI Express's exit code (they were never raised)
+* Fix Authentication#certificate_path= rejecting files that exist
+
 ## 1.3.2 (2023-03-30)
 * Improve valdiation of PkiExpressConfig's contructor parameters
 
